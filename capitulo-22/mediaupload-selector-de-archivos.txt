@@ -1,0 +1,53 @@
+import { useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { Button } from '@wordpress/components';
+
+export function Edit( { attributes, setAttributes } ) {
+    const { imageId, imageUrl, imageAlt } = attributes;
+    const blockProps = useBlockProps();
+
+    return (
+        <div { ...blockProps }>
+            <MediaUploadCheck>
+                <MediaUpload
+                    onSelect={ ( media ) => setAttributes( {
+                        imageId:  media.id,
+                        imageUrl: media.url,
+                        imageAlt: media.alt,
+                    } ) }
+                    allowedTypes={ [ 'image' ] }
+                    value={ imageId }
+                    render={ ( { open } ) => (
+                        <div className="ninja-image-picker">
+                            { imageUrl ? (
+                                <>
+                                    <img src={ imageUrl } alt={ imageAlt } />
+                                    <Button
+                                        onClick={ open }
+                                        variant="secondary"
+                                    >
+                                        Cambiar imagen
+                                    </Button>
+                                    <Button
+                                        onClick={ () => setAttributes( {
+                                            imageId: undefined,
+                                            imageUrl: '',
+                                            imageAlt: '',
+                                        } ) }
+                                        variant="link"
+                                        isDestructive
+                                    >
+                                        Eliminar imagen
+                                    </Button>
+                                </>
+                            ) : (
+                                <Button onClick={ open } variant="primary">
+                                    Seleccionar imagen
+                                </Button>
+                            ) }
+                        </div>
+                    ) }
+                />
+            </MediaUploadCheck>
+        </div>
+    );
+}

@@ -1,0 +1,16 @@
+- name: Set up Node
+  uses: actions/setup-node@v4
+  with:
+    node-version: '20'
+    cache: 'npm'
+
+- name: Cache build
+  uses: actions/cache@v4
+  with:
+    path: build/
+    key: ${{ runner.os }}-build-${{ hashFiles('src/**', 'package-lock.json') }}
+
+- name: Install and build
+  run: |
+    npm ci
+    npm run build

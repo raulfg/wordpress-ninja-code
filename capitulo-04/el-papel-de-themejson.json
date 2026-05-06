@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        { "name": "Primario", "slug": "primary", "color": "#1a1a2e" },
+        { "name": "Acento",   "slug": "accent",  "color": "#e94560" }
+      ]
+    },
+    "typography": {
+      "fontSizes": [
+        { "name": "Pequeño", "slug": "small",  "size": "0.875rem" },
+        { "name": "Normal",  "slug": "normal", "size": "1rem" },
+        { "name": "Grande",  "slug": "large",  "size": "1.5rem" }
+      ]
+    }
+  }
+}

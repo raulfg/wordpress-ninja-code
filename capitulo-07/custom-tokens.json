@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "custom": {
+            "border": {
+                "default": "1px solid var(--wp--preset--color--primary)"
+            },
+            "shadow": {
+                "small": "0 2px 4px rgba(0,0,0,0.1)",
+                "medium": "0 4px 12px rgba(0,0,0,0.15)"
+            },
+            "transition": {
+                "default": "all 0.2s ease"
+            }
+        }
+    }
+}

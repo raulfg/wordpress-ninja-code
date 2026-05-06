@@ -1,0 +1,29 @@
+/* El contenedor de la rejilla */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 280px, 1fr ) );
+    gap: var( --wp--custom--spacing--grid-gap, 1.5rem );
+}
+
+/* Cada card ocupa 1 celda por defecto */
+.portfolio-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* La descripción empuja el footer al fondo de la card */
+.portfolio-card__description {
+    flex: 1;
+}
+
+/* Un proyecto destacado ocupa 2 columnas */
+.portfolio-card--featured {
+    grid-column: span 2;
+}
+
+/* En mobile, span 2 ocuparía una sola columna en una rejilla de 1 columna — resetear */
+@media ( max-width: 600px ) {
+    .portfolio-card--featured {
+        grid-column: span 1;
+    }
+}

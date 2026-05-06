@@ -1,0 +1,23 @@
+# .github/workflows/deploy.yml
+name: Deploy to production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up vault password
+        run: echo "${{ secrets.VAULT_PASS }}" > trellis/.vault_pass
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Deploy
+        run: |
+          cd trellis
+          ansible-playbook deploy.yml -e "site=ejemplo.com env=production"

@@ -1,0 +1,19 @@
+{
+    "settings": {
+        "layout": {
+            "contentSize": "800px",
+            "wideSize": "1200px"
+        },
+        "custom": {
+            "spacing": {
+                "grid-gap": "1.5rem",
+                "grid-gap-small": "0.75rem"
+            }
+        }
+    },
+    "styles": {
+        "elements": {
+            "button": {}
+        }
+    }
+}

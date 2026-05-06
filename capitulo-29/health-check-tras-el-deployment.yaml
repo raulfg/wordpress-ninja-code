@@ -1,0 +1,16 @@
+- name: Health check
+  run: |
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://dominio.com/)
+    
+    if [ "$HTTP_CODE" != "200" ]; then
+      echo "Health check fallido. Código HTTP: $HTTP_CODE"
+      echo "Iniciando rollback automático..."
+      
+      # Restaurar el backup pre-deploy si existe
+      ssh -i /tmp/deploy_key ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
+        "ls -t /var/backups/pre-deploy-*.sql | head -1 | xargs wp db import --allow-root"
+      
+      exit 1
+    fi
+    
+    echo "Deployment completado. Sitio respondiendo correctamente."

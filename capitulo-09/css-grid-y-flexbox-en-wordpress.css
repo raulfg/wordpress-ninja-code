@@ -1,0 +1,22 @@
+/* Sistema de layout compatible con WordPress FSE */
+.entry-content > * {
+    max-width: var(--content-width);
+    margin-inline: auto;
+}
+
+/* Alineación wide: más ancho que el contenido */
+.entry-content > .alignwide {
+    max-width: var(--wide-width);
+}
+
+/* Alineación full: ancho completo */
+.entry-content > .alignfull {
+    max-width: 100%;
+    margin-inline: calc(-1 * var(--space-s));
+}
+
+@media (min-width: 64em) {
+    .entry-content > .alignfull {
+        margin-inline: calc(-1 * max(var(--space-m), (100vw - var(--wide-width)) / 2));
+    }
+}

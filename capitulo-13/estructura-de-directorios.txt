@@ -1,0 +1,20 @@
+mi-block-theme/
+├── style.css                 # Header del tema (obligatorio)
+├── theme.json                # Configuración de colores, tipografía, espaciado
+├── templates/
+│   ├── index.html            # Plantilla raíz (obligatoria)
+│   ├── single.html           # Entrada individual
+│   ├── page.html             # Página
+│   ├── archive.html          # Archivo de categoría/etiqueta
+│   ├── 404.html              # Página de error 404
+│   └── search.html           # Resultados de búsqueda
+├── parts/
+│   ├── header.html           # Cabecera del sitio
+│   ├── footer.html           # Pie del sitio
+│   └── sidebar.html          # Barra lateral
+├── patterns/
+│   ├── hero.php              # Patrón: hero de portada
+│   └── cta.php               # Patrón: llamada a la acción
+└── assets/
+    ├── css/
+    └── js/

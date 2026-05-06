@@ -1,0 +1,44 @@
+import { useSelect } from '@wordpress/data';
+import { useBlockProps } from '@wordpress/block-editor';
+
+export function Edit( { attributes, setAttributes } ) {
+    const { category, columns } = attributes;
+    const blockProps = useBlockProps();
+
+    // Obtener los proyectos del CPT portfolio desde la store de la REST API
+    const proyectos = useSelect(
+        ( select ) => {
+            const { getEntityRecords, isResolving } = select( 'core' );
+
+            const query = {
+                per_page: 6,
+                post_status: 'publish',
+                portfolio_category: category || undefined,
+            };
+
+            return {
+                posts:    getEntityRecords( 'postType', 'portfolio', query ),
+                loading:  isResolving( 'core', 'getEntityRecords', [ 'postType', 'portfolio', query ] ),
+            };
+        },
+        [ category ]
+    );
+
+    if ( proyectos.loading ) {
+        return <div { ...blockProps }><p>Cargando proyectos...</p></div>;
+    }
+
+    if ( ! proyectos.posts?.length ) {
+        return <div { ...blockProps }><p>No hay proyectos disponibles.</p></div>;
+    }
+
+    return (
+        <div { ...blockProps } className={ `portfolio-grid columns-${ columns }` }>
+            { proyectos.posts.map( ( post ) => (
+                <article key={ post.id }>
+                    <h3>{ post.title.rendered }</h3>
+                </article>
+            ) ) }
+        </div>
+    );
+}

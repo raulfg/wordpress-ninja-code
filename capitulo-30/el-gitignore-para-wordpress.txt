@@ -1,0 +1,36 @@
+# Núcleo de WordPress — no es código tuyo
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+
+# Uploads y caché
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+/wp-content/wflogs/
+
+# Plugins de terceros (si no se usan con Composer)
+# /wp-content/plugins/*
+# !wp-content/plugins/mi-plugin/
+
+# Dependencias locales
+node_modules/
+vendor/
+
+# Configuración con credenciales
+.env
+.env.local
+.env.*.local
+wp-config-local.php
+
+# Archivos del sistema operativo y del editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

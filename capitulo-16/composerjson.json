@@ -1,0 +1,16 @@
+{
+    "name": "ninjatheme/ninjatheme",
+    "description": "NinjaTheme WordPress Theme",
+    "type": "wordpress-theme",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "NinjaTheme\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

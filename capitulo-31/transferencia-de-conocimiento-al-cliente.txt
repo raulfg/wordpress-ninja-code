@@ -1,0 +1,21 @@
+## Guía de operaciones para [Cliente]
+
+### Cómo publicar contenido
+[Instrucciones específicas para los tipos de contenido que usa el sitio]
+
+### Qué NO tocar
+- No instales ni desactives plugins sin consultar
+- No edites archivos desde Apariencia → Editor (está desactivado)
+- No cambies el tema activo
+
+### Gestión de usuarios
+[Cómo añadir o eliminar usuarios, qué rol asignar]
+
+### Si algo falla
+1. Hacer captura de pantalla del error
+2. Anotar qué estabas haciendo cuando ocurrió
+3. Contactar a [nombre del desarrollador] en [email/teléfono]
+
+### Backups
+El sitio se hace backup automáticamente cada día a las 03:00.
+Los últimos 30 backups están disponibles en [URL del servicio de backup].

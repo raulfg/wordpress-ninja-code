@@ -1,0 +1,21 @@
+# CLAUDE.md — Proyecto Cliente
+
+## Contexto
+Portfolio profesional + tienda WooCommerce para [Cliente].
+Gestiona 3.000 productos y 500 órdenes mensuales.
+
+## Reglas importantes
+- PHP PSR-12 en todo el código del tema y plugins propios
+- Todos los textos del frontend deben pasar por __() con domain 'cliente-theme'
+- No añadir dependencias de Composer sin aprobar con el equipo
+
+## Arquitectura
+- Tema: /web/app/themes/cliente-theme/
+- Plugin custom: /web/app/plugins/cliente-portfolio/
+- ACF Field Groups: en /web/app/themes/cliente-theme/acf-json/
+- Configuración Trellis: repositorio separado (acceso restringido)
+
+## Flujo de trabajo
+- Feature branches: develop → staging → main
+- PR obligatoria para main, requiere revisión de al menos 1 persona
+- CI verifica PHPCS, ESLint y PHPUnit antes de mergear

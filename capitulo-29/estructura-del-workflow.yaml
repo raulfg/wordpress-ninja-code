@@ -1,0 +1,64 @@
+# .github/workflows/deploy.yml
+name: Deploy a producción
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false   # Nunca cancelar un deploy en curso
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+
+      - name: Caché de Composer
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-
+
+      - name: Instalar dependencias (sin dev)
+        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+
+      - name: Compilar assets de frontend
+        run: |
+          npm ci
+          npm run build
+        working-directory: web/app/themes/ninjatheme
+
+      - name: Sincronizar archivos al servidor
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete --exclude='.git' --exclude='.env' --exclude='node_modules'
+          path: ./
+          remote_path: ${{ secrets.PROD_PATH }}
+          remote_host: ${{ secrets.PROD_HOST }}
+          remote_user: ${{ secrets.PROD_USER }}
+          remote_key: ${{ secrets.PROD_SSH_KEY }}
+
+      - name: Ejecutar migraciones y limpiar caché
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd ${{ secrets.PROD_PATH }}
+            wp core update-db --allow-root
+            wp cache flush --allow-root
+            php-fpm8.2 -t && sudo systemctl reload php8.2-fpm

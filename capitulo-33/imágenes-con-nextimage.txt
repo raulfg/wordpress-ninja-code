@@ -1,0 +1,29 @@
+import Image from 'next/image';
+
+interface PostCardProps {
+    post: {
+        title: { rendered: string };
+        _embedded: {
+            'wp:featuredmedia'?: WordPressMedia[];
+        };
+    };
+}
+
+export function PostCard( { post }: PostCardProps ) {
+    const media = post._embedded?.['wp:featuredmedia']?.[0];
+
+    return (
+        <article>
+            {media && (
+                <Image
+                    src={getImageSrc( media, 'medium_large' )}
+                    alt={media.alt_text || post.title.rendered}
+                    width={media.media_details.sizes.medium_large?.width ?? 768}
+                    height={media.media_details.sizes.medium_large?.height ?? 432}
+                    loading="eager" // para imágenes above the fold
+                />
+            )}
+            <h2>{post.title.rendered}</h2>
+        </article>
+    );
+}

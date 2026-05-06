@@ -1,0 +1,39 @@
+/* Layout de página con sidebar */
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-template-areas:
+        "header  header"
+        "main    sidebar"
+        "footer  footer";
+    gap: 0 2rem;
+    max-width: var( --wp--style--global--content-size );
+    margin: 0 auto;
+    padding: 0 var( --wp--custom--spacing--page-padding, 1.5rem );
+}
+
+.page-header  { grid-area: header;  }
+.page-main    { grid-area: main;    }
+.page-sidebar { grid-area: sidebar; }
+.page-footer  { grid-area: footer;  }
+
+/* Sin sidebar: columna única */
+.page-layout--no-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+}
+
+/* Responsive: sidebar debajo del contenido en mobile */
+@media ( max-width: 768px ) {
+    .page-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+    }
+}

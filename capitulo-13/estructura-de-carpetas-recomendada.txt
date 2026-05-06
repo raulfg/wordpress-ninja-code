@@ -1,0 +1,27 @@
+ninjatheme/
+├── style.css
+├── index.php
+├── functions.php
+├── header.php
+├── footer.php
+├── sidebar.php
+├── single.php
+├── page.php
+├── archive.php
+├── 404.php
+├── search.php
+├── screenshot.png
+├── assets/
+│   ├── css/
+│   │   └── main.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+├── inc/
+│   ├── enqueue.php
+│   ├── theme-support.php
+│   └── template-functions.php
+└── template-parts/
+    ├── content-post.php
+    ├── content-page.php
+    └── content-none.php

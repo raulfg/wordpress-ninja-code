@@ -1,0 +1,19 @@
+trellis/
+├── group_vars/
+│   ├── all/
+│   │   ├── main.yml          # Configuración global (versión PHP, usuarios, etc.)
+│   │   ├── security.yml
+│   │   └── vault.yml
+│   ├── development/
+│   │   ├── wordpress_sites.yml
+│   │   └── vault.yml
+│   ├── staging/
+│   │   ├── wordpress_sites.yml
+│   │   └── vault.yml
+│   └── production/
+│       ├── wordpress_sites.yml
+│       └── vault.yml
+├── hosts/
+│   ├── development
+│   ├── staging
+│   └── production

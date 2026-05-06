@@ -1,0 +1,30 @@
+## WordPress específico
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/w3tc-config/
+
+## Plugins y temas gestionados por Composer
+wp-content/plugins/*
+wp-content/themes/twenty*/
+!wp-content/plugins/.gitkeep
+!wp-content/themes/.gitkeep
+
+## Archivos del sistema
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+## Dependencias
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+
+## Entornos
+.env
+.env.local

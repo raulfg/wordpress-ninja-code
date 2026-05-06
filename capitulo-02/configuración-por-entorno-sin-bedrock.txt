@@ -1,0 +1,19 @@
+# Configuración local con credenciales
+wp-config-local.php
+
+# WordPress core — se descarga, no se versiona
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+
+# Contenido generado por usuarios
+/wp-content/uploads/
+/wp-content/cache/
+
+# Si versiona solo tu tema/plugin, excluir los demás
+/wp-content/plugins/
+!/wp-content/plugins/mi-plugin/
+/wp-content/themes/
+!/wp-content/themes/mi-tema/

@@ -1,0 +1,25 @@
+/* Variables globales del tema — declaradas en :root o via theme.json */
+:root {
+    --color-accent: #3b82f6;
+    --card-border-radius: 0.5rem;
+    --card-shadow: 0 1px 3px rgb( 0 0 0 / 0.1 );
+}
+
+/* La card usa las variables globales por defecto */
+.portfolio-card {
+    border-radius: var( --card-border-radius );
+    box-shadow: var( --card-shadow );
+}
+
+/* La card destacada tiene sombra más pronunciada sin cambiar el componente base */
+.portfolio-card--featured {
+    --card-shadow: 0 4px 12px rgb( 0 0 0 / 0.15 );
+}
+
+/* En dark mode, las variables se redefinen */
+@media ( prefers-color-scheme: dark ) {
+    :root {
+        --color-accent: #60a5fa;
+        --card-shadow: 0 1px 3px rgb( 255 255 255 / 0.05 );
+    }
+}

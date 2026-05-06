@@ -1,0 +1,17 @@
+wordpress_sites:
+  mi-proyecto.com:
+    site_hosts:
+      - canonical: mi-proyecto.com
+        redirects:
+          - www.mi-proyecto.com
+    local_path: ../site
+    repo: git@github.com:mi-organizacion/mi-proyecto.git
+    repo_subtree_path: web
+    branch: main
+    multisite:
+      enabled: false
+    ssl:
+      enabled: true
+      provider: letsencrypt
+    cache:
+      enabled: false

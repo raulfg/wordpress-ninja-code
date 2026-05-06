@@ -1,0 +1,23 @@
+/* Declarar el contenedor */
+.card-wrapper {
+    container-type: inline-size;
+    container-name: card;
+}
+
+/* Estilos que dependen del tamaño del contenedor, no del viewport */
+.post-card {
+    display: flex;
+    flex-direction: column;
+}
+
+@container card (min-width: 400px) {
+    .post-card {
+        flex-direction: row;
+        gap: var(--space-m);
+    }
+
+    .post-card__thumbnail {
+        width: 40%;
+        flex-shrink: 0;
+    }
+}

@@ -1,0 +1,49 @@
+# .github/workflows/deploy-production.yml
+name: Deploy to production
+
+on:
+  push:
+    tags:
+      - 'v*'   # Solo despliega cuando se crea un tag de versión
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production   # Requiere aprobación manual en GitHub
+
+    steps:
+      - name: Checkout Trellis
+        uses: actions/checkout@v4
+        with:
+          repository: empresa/proyecto-trellis
+          ssh-key: ${{ secrets.TRELLIS_DEPLOY_KEY }}
+          path: trellis
+
+      - name: Checkout site
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Set up Python for Ansible
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRODUCTION_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan ${{ vars.PRODUCTION_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Write vault password
+        run: echo "${{ secrets.VAULT_PASS }}" > trellis/.vault_pass
+
+      - name: Deploy
+        run: |
+          cd trellis
+          ansible-playbook deploy.yml \
+            -e "site=ejemplo.com env=production"

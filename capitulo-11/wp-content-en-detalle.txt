@@ -1,0 +1,17 @@
+wp-content/
+├── themes/
+│   ├── twentytwentyfour/        # Tema por defecto
+│   ├── ninjatheme/              # Tu tema
+│   └── ninjatheme-child/        # Tema hijo (opcional)
+├── plugins/
+│   ├── woocommerce/
+│   └── ninja-portfolio-enhancer/
+├── mu-plugins/                  # Must-use plugins
+├── uploads/
+│   ├── 2024/
+│   │   ├── 01/
+│   │   └── 02/
+│   └── 2025/
+└── languages/
+    ├── ninjatheme-es_ES.po
+    └── ninjatheme-es_ES.mo

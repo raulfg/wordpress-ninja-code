@@ -1,0 +1,18 @@
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      - db
+      - wordpress
+    volumes:
+      - ./wp-content/themes/ninjatheme:/var/www/html/wp-content/themes/ninjatheme
+      - ./wp-content/plugins/ninja-portfolio-enhancer:/var/www/html/wp-content/plugins/ninja-portfolio-enhancer
+      - wp_uploads:/var/www/html/wp-content/uploads
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppassword
+    profiles:
+      - tools
+    entrypoint: ["wp", "--allow-root"]
+    working_dir: /var/www/html

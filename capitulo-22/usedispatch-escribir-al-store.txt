@@ -1,0 +1,18 @@
+import { useDispatch } from '@wordpress/data';
+
+// Dentro del componente Edit:
+const { createNotice } = useDispatch( 'core/notices' );
+
+// Mostrar una notificación en el editor
+const handleSave = async () => {
+    try {
+        await guardarAlgunaDato();
+        createNotice( 'success', 'Datos guardados correctamente.', {
+            isDismissible: true,
+        } );
+    } catch ( error ) {
+        createNotice( 'error', 'Error al guardar los datos.', {
+            isDismissible: true,
+        } );
+    }
+};

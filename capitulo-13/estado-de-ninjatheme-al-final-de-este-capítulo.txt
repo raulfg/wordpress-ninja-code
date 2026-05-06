@@ -1,0 +1,19 @@
+ninjatheme/
+├── style.css                          — Metadatos del tema
+├── index.php                          — Fallback universal
+├── single.php                         — Entradas individuales
+├── page.php                           — Páginas estáticas
+├── archive.php                        — Archivos (categorías, etiquetas, fechas, autores)
+├── search.php                         — Resultados de búsqueda
+├── 404.php                            — Página de error
+├── header.php                         — Cabecera del sitio
+├── footer.php                         — Pie del sitio
+├── functions.php                      — Bootstrap
+├── inc/
+│   ├── enqueue.php                    — Registro de assets
+│   └── theme-support.php             — Capacidades del tema
+└── template-parts/
+    ├── content-post.php               — Vista de entrada en listados
+    ├── content-page.php               — Vista de página
+    ├── content-single.php             — Vista de entrada individual
+    └── content-none.php               — Mensaje sin resultados
