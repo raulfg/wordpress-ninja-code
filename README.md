@@ -5,7 +5,7 @@ Repositorio de acompañamiento del libro **WordPress: de Cero a Ninja** (Raul Fe
 Cada carpeta corresponde a un capítulo del libro. Los archivos contienen los ejemplos completos que el libro referencia con la nota:
 
 ```
-// Código completo: github.com/raulfg/wordpress-ninja-code
+// Código completo: ninjawordpress.com
 ```
 
 ## Estructura
@@ -56,7 +56,7 @@ El código está pensado para ejecutarse tal como aparece, con las dependencias 
 
 ## Libro
 
-El libro está disponible en Amazon KDP. Más información en [github.com/raulfg/WordPress-de-Cero-a-Ninja](https://github.com/raulfg/WordPress-de-Cero-a-Ninja).
+Más información en [ninjawordpress.com](https://ninjawordpress.com) o compra el libro en [Amazon KDP](https://amzn.to/4dFEdK7).
 
 ## Licencia
 
