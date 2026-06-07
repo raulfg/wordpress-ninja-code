@@ -1,0 +1,39 @@
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+
+// Optional template: predefined blocks that appear when the block is inserted
+const TEMPLATE = [
+    [ 'core/heading', { level: 2, placeholder: 'Section title' } ],
+    [ 'core/paragraph', { placeholder: 'Write the description here...' } ],
+];
+
+// List of blocks allowed inside the container
+const ALLOWED_BLOCKS = [
+    'core/heading',
+    'core/paragraph',
+    'core/image',
+    'ninjatheme/portfolio-card',
+];
+
+export function Edit( { attributes } ) {
+    const blockProps = useBlockProps( { className: 'ninja-section' } );
+
+    return (
+        <div { ...blockProps }>
+            <InnerBlocks
+                template={ TEMPLATE }
+                allowedBlocks={ ALLOWED_BLOCKS }
+                templateLock={ false }    // false = editable, "all" = locked, "insert" = no adding
+            />
+        </div>
+    );
+}
+
+export function Save() {
+    const blockProps = useBlockProps.save( { className: 'ninja-section' } );
+
+    return (
+        <div { ...blockProps }>
+            <InnerBlocks.Content />
+        </div>
+    );
+}

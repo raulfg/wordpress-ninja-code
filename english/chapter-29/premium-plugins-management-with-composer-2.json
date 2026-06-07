@@ -1,0 +1,19 @@
+{
+  "name": "company/registry",
+  "homepage": "https://registry.company.com",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:company/private-plugin.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:company/private-theme.git"
+    }
+  ],
+  "require-all": true,
+  "archive": {
+    "directory": "dist",
+    "format": "zip"
+  }
+}

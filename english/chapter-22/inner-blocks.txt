@@ -1,0 +1,23 @@
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+
+const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/heading', 'core/image' ];
+
+export function Edit() {
+    const blockProps = useBlockProps();
+
+    return (
+        <div { ...blockProps }>
+            <InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+        </div>
+    );
+}
+
+export function Save() {
+    const blockProps = useBlockProps.save();
+
+    return (
+        <div { ...blockProps }>
+            <InnerBlocks.Content />
+        </div>
+    );
+}

@@ -1,0 +1,29 @@
+{
+    "settings": {
+        "spacing": {
+            "spacingScale": {
+                "steps": 7,
+                "mediumStep": 1.5,
+                "unit": "rem",
+                "operator": "*",
+                "increment": 1.5,
+                "type": "linear"
+            },
+            "spacingSizes": [
+                { "name": "XS", "slug": "xs", "size": "0.5rem" },
+                { "name": "S",  "slug": "s",  "size": "1rem" },
+                { "name": "M",  "slug": "m",  "size": "1.5rem" },
+                { "name": "L",  "slug": "l",  "size": "2.5rem" },
+                { "name": "XL", "slug": "xl", "size": "4rem" }
+            ],
+            "padding": true,
+            "margin": true,
+            "blockGap": true,
+            "customSpacingSize": false
+        },
+        "layout": {
+            "contentSize": "720px",
+            "wideSize": "1100px"
+        }
+    }
+}

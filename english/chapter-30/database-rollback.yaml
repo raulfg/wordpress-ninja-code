@@ -1,0 +1,16 @@
+# In .github/workflows/deploy.yml
+- name: Backup before deployment
+  run: |
+    ssh ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
+      "wp db export /var/backups/pre-deploy-$(date +%Y%m%d-%H%M%S).sql --allow-root"
+
+- name: Deploy
+  run: |
+    # The actual deployment goes here
+    ./scripts/deploy.sh
+
+- name: Verify deployment
+  run: |
+    # Basic health check
+    curl -f https://domain.com/wp-json/wp/v2/ || \
+      (echo "Deployment failed, restore backup" && exit 1)

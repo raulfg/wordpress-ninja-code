@@ -1,0 +1,20 @@
+my-project/
+├── composer.json
+├── composer.lock
+├── .env
+├── .env.example
+├── config/
+│   ├── application.php
+│   └── environments/
+│       ├── development.php
+│       ├── staging.php
+│       └── production.php
+├── vendor/
+└── web/
+    ├── app/
+    │   ├── mu-plugins/
+    │   ├── plugins/
+    │   ├── themes/
+    │   └── uploads/
+    ├── wp/
+    └── wp-config.php

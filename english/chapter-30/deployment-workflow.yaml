@@ -1,0 +1,48 @@
+# .github/workflows/deploy.yml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-staging:
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    environment: staging   # Environment with branch protections in GitHub
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Build assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy via rsync
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_KEY }}
+          ARGS: "-rlgoDzvc --delete --exclude='.env' --exclude='wp-config.php'"
+          SOURCE: "."
+          REMOTE_HOST: ${{ vars.STAGING_HOST }}
+          REMOTE_USER: deploy
+          TARGET: /var/www/staging/
+
+      - name: Run post-deploy commands
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.STAGING_HOST }}
+          username: deploy
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /var/www/staging
+            composer install --no-dev --optimize-autoloader
+            wp core update-db --allow-root
+            wp cache flush --allow-root

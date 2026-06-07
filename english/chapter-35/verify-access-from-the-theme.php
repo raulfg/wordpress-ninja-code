@@ -1,0 +1,18 @@
+// In single-course.php or the Portfolio block of the theme
+$course_id   = get_the_ID();
+$user_id     = get_current_user_id();
+$is_enrolled = $user_id ? llms_is_user_enrolled( $user_id, $course_id ) : false;
+
+if ( $is_enrolled ) {
+    // Show the "Continue course" button with current progress
+    $progress = llms_get_user_postmeta( $user_id, $course_id, '_overall_progress' );
+    printf(
+        '<a href="%s">%s — %d%%</a>',
+        esc_url( llms_get_next_incomplete_lesson_url( $course_id, $user_id ) ),
+        esc_html__( 'Continue', 'ninjatheme' ),
+        absint( $progress )
+    );
+} else {
+    // Show the purchase button managed by MemberPress or LifterLMS
+    echo llms_get_enrollment_trigger_text( $course_id );
+}

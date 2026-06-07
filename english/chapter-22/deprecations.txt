@@ -1,0 +1,21 @@
+export const deprecated = [
+    {
+        attributes: {
+            columns: { type: 'number', default: 3 },
+        },
+        save( { attributes } ) {
+            const { columns } = attributes;
+            return (
+                <div className={ `portfolio-grid columns-${ columns }` }>
+                    { /* markup from the previous version */ }
+                </div>
+            );
+        },
+        migrate( attributes ) {
+            return {
+                ...attributes,
+                category: '',
+            };
+        },
+    },
+];

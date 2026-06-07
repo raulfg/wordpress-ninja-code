@@ -1,0 +1,21 @@
+## Operations guide for [Client]
+
+### How to publish content
+[Specific instructions for the content types used on the site]
+
+### What NOT to touch
+- Do not install or deactivate plugins without consulting first
+- Do not edit files via Appearance → Editor (it is disabled)
+- Do not change the active theme
+
+### User management
+[How to add or remove users, which role to assign]
+
+### If something breaks
+1. Take a screenshot of the error
+2. Note what you were doing when it occurred
+3. Contact [developer name] at [email/phone]
+
+### Backups
+The site is backed up automatically every day at 03:00.
+The last 30 backups are available at [backup service URL].

@@ -1,0 +1,61 @@
+/* blocks/portfolio-grid/style.css */
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat( var( --portfolio-columns, 3 ), 1fr );
+    gap: var( --wp--style--block-gap, 1.5rem );
+}
+
+/* Container breakpoint, not viewport */
+@container (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@container (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat( min( var( --portfolio-columns, 3 ), 2 ), 1fr );
+    }
+}
+
+.portfolio-card__thumb img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.portfolio-card__body {
+    padding: 1rem;
+}
+
+.portfolio-card__title {
+    font-size: var( --wp--preset--font-size--medium, 1.1rem );
+    margin-block-end: 0.5rem;
+}
+
+.portfolio-card__title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.portfolio-card__title a:hover {
+    text-decoration: underline;
+}
+
+.portfolio-card__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-start: 0.75rem;
+}
+
+.portfolio-cat {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    background-color: var( --wp--preset--color--light, #f0f0f0 );
+    color: inherit;
+    text-decoration: none;
+}

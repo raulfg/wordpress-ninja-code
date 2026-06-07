@@ -1,0 +1,36 @@
+# .github/workflows/lighthouse.yml
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            https://staging.ejemplo.com/
+            https://staging.ejemplo.com/blog/
+          budgetPath: ./lighthouse-budget.json
+          uploadArtifacts: true
+
+# lighthouse-budget.json
+# Defines the thresholds that trigger a CI failure
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 0.85}],
+        "categories:accessibility": ["warn", {"minScore": 0.90}],
+        "first-contentful-paint": ["error", {"maxNumericValue": 2000}],
+        "largest-contentful-paint": ["error", {"maxNumericValue": 2500}]
+      }
+    }
+  }
+}

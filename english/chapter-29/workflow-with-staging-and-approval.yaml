@@ -1,0 +1,24 @@
+name: Deploy staging and production
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  deploy-staging:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      # Same steps as before, but with staging variables
+
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://domain.com
+    steps:
+      - uses: actions/checkout@v4
+      # Same steps with production variables

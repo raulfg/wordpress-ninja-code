@@ -1,0 +1,23 @@
+query GetPortfolioProjects($first: Int!) {
+    portfolios(first: $first) {
+        nodes {
+            id
+            slug
+            title
+            portfolioFields {
+                proyectoUrl
+                proyectoAño
+                proyectoCliente
+                proyectoDestacado
+                imagenSecundaria {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:6.4-php8.2-apache
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    volumes:
+      # Document root points to web/, not the project root
+      - .:/var/www/project
+      - ./web:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      # Bedrock's wp-config.php uses environment variables
+      WP_HOME: http://localhost:8080
+      WP_SITEURL: http://localhost:8080/wp
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/project
+      - ./web:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    working_dir: /var/www/html
+    profiles: [tools]
+    entrypoint: ["wp", "--allow-root"]
+
+volumes:
+  db_data:

@@ -1,0 +1,64 @@
+# docker-compose.prod.yml
+services:
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    networks:
+      - backend
+
+  wordpress:
+    image: registry.company.com/ninjatheme:${IMAGE_TAG:-latest}
+    restart: always
+    depends_on:
+      - db
+      - redis
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: ${WP_TABLE_PREFIX:-wp_}
+    volumes:
+      - uploads:/var/www/html/wp-content/uploads
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - uploads:/var/www/html/wp-content/uploads:ro
+      - certbot:/etc/letsencrypt:ro
+    depends_on:
+      - wordpress
+    networks:
+      - backend
+      - frontend
+
+volumes:
+  db_data:
+  uploads:
+  certbot:
+
+networks:
+  backend:
+    internal: true    # The backend network has no internet access
+  frontend:

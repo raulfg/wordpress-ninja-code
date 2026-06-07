@@ -1,0 +1,33 @@
+Request received
+│
+├── Single post? (single)
+│   ├── single-{post-type}-{slug}.php
+│   ├── single-{post-type}.php
+│   ├── single.php
+│   ├── singular.php
+│   └── index.php
+│
+├── Page? (page)
+│   ├── page-{slug}.php
+│   ├── page-{id}.php
+│   ├── page.php
+│   ├── singular.php
+│   └── index.php
+│
+├── Archive? (archive)
+│   ├── category-{slug}.php / category.php
+│   ├── tag-{slug}.php / tag.php
+│   ├── author-{nicename}.php / author.php
+│   ├── archive-{post-type}.php
+│   ├── archive.php
+│   └── index.php
+│
+├── Search? (search)
+│   ├── search.php
+│   └── index.php
+│
+├── 404? (error)
+│   ├── 404.php
+│   └── index.php
+│
+└── Final fallback: index.php

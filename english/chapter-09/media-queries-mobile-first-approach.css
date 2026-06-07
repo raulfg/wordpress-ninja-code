@@ -1,0 +1,40 @@
+/* Base: mobile (0px and up) */
+.site-content {
+    padding-inline: var(--space-s);
+}
+
+.post-grid {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: 1fr;
+}
+
+/* Tablet: from 640px */
+@media (min-width: 40em) {  /* 640px */
+    .site-content {
+        padding-inline: var(--space-m);
+    }
+
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: from 1024px */
+@media (min-width: 64em) {  /* 1024px */
+    .site-content {
+        max-width: var(--content-width);
+        margin-inline: auto;
+    }
+
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Wide: from 1280px */
+@media (min-width: 80em) {  /* 1280px */
+    .post-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

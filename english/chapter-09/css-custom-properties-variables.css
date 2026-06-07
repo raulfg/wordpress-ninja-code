@@ -1,0 +1,16 @@
+/* Define variable */
+:root {
+    --color-primary: #FF5733;
+    --color-secondary: #33FF57;
+    --spacing-large: 40px;
+}
+
+/* Use variable */
+.button {
+    background: var(--color-primary);
+    padding: var(--spacing-large);
+}
+
+.title {
+    color: var(--color-primary);
+}

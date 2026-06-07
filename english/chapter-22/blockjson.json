@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ninjatheme/portfolio-grid",
+    "title": "Portfolio Grid",
+    "description": "Displays portfolio projects in a configurable grid.",
+    "category": "ninjatheme",
+    "icon": "grid-view",
+    "textdomain": "ninja-portfolio",
+    "editorScript": "file:../../build/index.js",
+    "editorStyle":  "file:./editor.css",
+    "style":        "file:./style.css",
+    "render":       "file:./render.php",
+    "attributes": {
+        "columns": {
+            "type":    "number",
+            "default": 3
+        },
+        "perPage": {
+            "type":    "number",
+            "default": 9
+        },
+        "category": {
+            "type":    "string",
+            "default": ""
+        },
+        "showExcerpt": {
+            "type":    "boolean",
+            "default": false
+        },
+        "orderby": {
+            "type":    "string",
+            "default": "date"
+        }
+    },
+    "supports": {
+        "align":   [ "wide", "full" ],
+        "spacing": { "padding": true, "margin": true },
+        "color":   { "background": true }
+    }
+}

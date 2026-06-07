@@ -1,0 +1,23 @@
+{
+  "editor.tabSize": 4,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": true,
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "files.associations": {
+    "*.php": "php"
+  },
+  "php.suggest.basic": false,
+  "intelephense.diagnostics.undefinedFunctions": false,
+  "intelephense.stubs": [
+    "wordpress"
+  ],
+  "emmet.includeLanguages": {
+    "php": "html"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  }
+}

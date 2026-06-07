@@ -1,0 +1,29 @@
+/* The grid container */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 280px, 1fr ) );
+    gap: var( --wp--custom--spacing--grid-gap, 1.5rem );
+}
+
+/* Each card occupies 1 cell by default */
+.portfolio-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The description pushes the footer to the bottom of the card */
+.portfolio-card__description {
+    flex: 1;
+}
+
+/* A featured project spans 2 columns */
+.portfolio-card--featured {
+    grid-column: span 2;
+}
+
+/* On mobile, span 2 would occupy a single column in a 1-column grid — reset it */
+@media ( max-width: 600px ) {
+    .portfolio-card--featured {
+        grid-column: span 1;
+    }
+}

@@ -1,0 +1,16 @@
+<!-- pages/portfolio/[slug].vue -->
+<script setup lang="ts">
+const route   = useRoute();
+const config  = useRuntimeConfig();
+
+const { data: post } = await useFetch(
+    `${ config.public.wordpressUrl }/wp/v2/portfolio?slug=${ route.params.slug }&_embed`
+);
+</script>
+
+<template>
+    <article v-if="post?.[0]">
+        <h1 v-html="post[0].title.rendered" />
+        <div class="content" v-html="post[0].content.rendered" />
+    </article>
+</template>

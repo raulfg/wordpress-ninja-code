@@ -1,0 +1,20 @@
+# trellis/group_vars/production/wordpress_sites.yml
+
+wordpress_sites:
+  example.com:
+    site_hosts:
+      - canonical: example.com
+        redirects:
+          - www.example.com
+    local_path: ../site
+    repo: git@github.com:your-user/example-com.git
+    repo_subtree_path: ""
+    branch: main
+    env:
+      db_name: example_com
+      db_user: example_com
+      db_password: "{{ vault_wordpress_sites['example.com']['env']['db_password'] }}"
+      # WordPress keys from vault
+      auth_key:         "{{ vault_wordpress_sites['example.com']['env']['auth_key'] }}"
+      secure_auth_key:  "{{ vault_wordpress_sites['example.com']['env']['secure_auth_key'] }}"
+      # ... remaining keys and salts

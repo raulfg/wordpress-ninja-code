@@ -1,0 +1,19 @@
+# Local configuration with credentials
+wp-config-local.php
+
+# WordPress core — downloaded, not versioned
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+
+# User-generated content
+/wp-content/uploads/
+/wp-content/cache/
+
+# If versioning only your theme/plugin, exclude the rest
+/wp-content/plugins/
+!/wp-content/plugins/my-plugin/
+/wp-content/themes/
+!/wp-content/themes/my-theme/

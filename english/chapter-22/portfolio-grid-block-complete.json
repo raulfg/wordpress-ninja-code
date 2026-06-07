@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ninjatheme/portfolio-grid",
+    "title": "Portfolio Grid",
+    "category": "ninjatheme",
+    "textdomain": "ninjatheme",
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php",
+    "attributes": {
+        "columns": {
+            "type": "number",
+            "default": 3
+        },
+        "category": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "supports": {
+        "align": [ "wide", "full" ],
+        "spacing": { "padding": true }
+    }
+}

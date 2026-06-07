@@ -1,0 +1,29 @@
+# .github/workflows/lighthouse.yml
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://ninjatheme.com/
+            https://ninjatheme.com/portfolio/
+          budgetPath: ./.lighthouserc.json
+          uploadArtifacts: true
+
+      - name: Fail if performance < 85
+        run: |
+          SCORE=$(cat .lighthouseci/report.json | jq '.categories.performance.score * 100 | floor')
+          if [ "$SCORE" -lt 85 ]; then
+            echo "Performance score: $SCORE (minimum required: 85)"
+            exit 1
+          fi

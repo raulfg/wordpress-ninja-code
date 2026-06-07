@@ -1,0 +1,17 @@
+manage_options
+install_plugins
+activate_plugins
+edit_plugins
+install_themes
+edit_themes
+switch_themes
+delete_themes
+delete_plugins
+edit_users
+create_users
+delete_users
+promote_users
+update_core
+update_plugins
+update_themes
+...and many more

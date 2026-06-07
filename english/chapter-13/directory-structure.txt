@@ -1,0 +1,20 @@
+my-block-theme/
+├── style.css                 # Theme header (required)
+├── theme.json                # Color, typography, and spacing configuration
+├── templates/
+│   ├── index.html            # Root template (required)
+│   ├── single.html           # Individual post
+│   ├── page.html             # Page
+│   ├── archive.html          # Category/tag archive
+│   ├── 404.html              # 404 error page
+│   └── search.html           # Search results
+├── parts/
+│   ├── header.html           # Site header
+│   ├── footer.html           # Site footer
+│   └── sidebar.html          # Sidebar
+├── patterns/
+│   ├── hero.php              # Pattern: homepage hero
+│   └── cta.php               # Pattern: call to action
+└── assets/
+    ├── css/
+    └── js/

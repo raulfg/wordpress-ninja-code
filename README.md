@@ -6,7 +6,7 @@
 
 Repositorio de acompañamiento del libro **WordPress: de Cero a Ninja** (Raúl Fernández).
 
-Los ejemplos están en la carpeta `es/`. Cada subcarpeta corresponde a un capítulo del libro. Los archivos contienen los ejemplos completos que el libro referencia con la nota:
+Los ejemplos están en la carpeta `español/`. Cada subcarpeta corresponde a un capítulo del libro. Los archivos contienen los ejemplos completos que el libro referencia con la nota:
 
 ```
 // Código completo: ninjawordpress.com
@@ -15,7 +15,7 @@ Los ejemplos están en la carpeta `es/`. Cada subcarpeta corresponde a un capít
 ### Estructura
 
 ```
-es/
+español/
   capitulo-01/   Introducción al Ecosistema y Filosofía WordPress
   capitulo-02/   Instalación Profesional y Configuración del Entorno
   capitulo-03/   Anatomía del Dashboard y Gestión Avanzada de Usuarios
@@ -69,7 +69,7 @@ Más información en [ninjawordpress.com](https://ninjawordpress.com) o compra e
 
 Companion repository for the book **WordPress: From Zero to Ninja** (Raúl Fernández).
 
-Examples are in the `en/` folder. Each subfolder corresponds to a chapter of the book. Files contain the complete examples referenced in the book with the note:
+Examples are in the `english/` folder. Each subfolder corresponds to a chapter of the book. Files contain the complete examples referenced in the book with the note:
 
 ```
 // Full code: ninjawordpress.com
@@ -78,7 +78,7 @@ Examples are in the `en/` folder. Each subfolder corresponds to a chapter of the
 ### Structure
 
 ```
-en/
+english/
   chapter-01/   Introduction to WordPress: Ecosystem and Philosophy
   chapter-02/   Professional Installation and Environment Setup
   chapter-03/   Dashboard Anatomy and Advanced User Management

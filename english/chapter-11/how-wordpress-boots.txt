@@ -1,0 +1,24 @@
+HTTP request received
+        │
+        ▼
+index.php (site root)
+  └─ require wp-blog-header.php
+       ├─ require_once wp-load.php
+       │    ├─ define ABSPATH
+       │    ├─ require_once wp-config.php
+       │    │    └─ define constants (DB, salts, WP_DEBUG...)
+       │    └─ require_once wp-settings.php
+       │         ├─ Connect to DB (wpdb)
+       │         ├─ Load must-use plugins (wp-content/mu-plugins/)
+       │         ├─ Load active plugins (wp_get_active_and_valid_plugins)
+       │         │    └─ do_action('plugins_loaded')
+       │         ├─ Load active theme (functions.php)
+       │         │    └─ do_action('after_setup_theme')
+       │         ├─ do_action('init')
+       │         └─ do_action('wp_loaded')
+       │
+       └─ require_once wp-includes/template-loader.php
+            ├─ do_action('wp') — main query executed
+            ├─ do_action('template_redirect')
+            └─ Load template according to Template Hierarchy
+                 └─ do_action('wp_head') ... do_action('wp_footer')

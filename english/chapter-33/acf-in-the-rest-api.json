@@ -1,0 +1,16 @@
+{
+    "id": 42,
+    "title": { "rendered": "Proyecto web corporativa" },
+    "acf": {
+        "proyecto_url": "https://empresa-cliente.com",
+        "proyecto_año": 2024,
+        "proyecto_cliente": "Empresa Cliente S.A.",
+        "proyecto_destacado": true,
+        "imagen_secundaria": {
+            "ID": 156,
+            "url": "https://contenido.tudominio.com/wp-content/uploads/2024/proyecto.jpg",
+            "width": 1200,
+            "height": 800
+        }
+    }
+}

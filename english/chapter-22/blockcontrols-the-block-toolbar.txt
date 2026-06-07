@@ -1,0 +1,54 @@
+import {
+    useBlockProps,
+    BlockControls,
+    AlignmentToolbar,
+    InspectorControls,
+} from '@wordpress/block-editor';
+import {
+    ToolbarGroup,
+    ToolbarButton,
+    PanelBody,
+    ToggleControl,
+} from '@wordpress/components';
+import { formatUppercase } from '@wordpress/icons';
+
+export function Edit( { attributes, setAttributes } ) {
+    const { align, uppercase, showExcerpt } = attributes;
+    const blockProps = useBlockProps();
+
+    return (
+        <>
+            {/* Toolbar: alignment and text formatting */}
+            <BlockControls>
+                <AlignmentToolbar
+                    value={ align }
+                    onChange={ ( value ) => setAttributes( { align: value } ) }
+                />
+                <ToolbarGroup>
+                    <ToolbarButton
+                        icon={ formatUppercase }
+                        label="Uppercase"
+                        isActive={ uppercase }
+                        onClick={ () => setAttributes( { uppercase: ! uppercase } ) }
+                    />
+                </ToolbarGroup>
+            </BlockControls>
+
+            {/* Inspector: settings not immediately visible */}
+            <InspectorControls>
+                <PanelBody title="Display">
+                    <ToggleControl
+                        label="Show excerpt"
+                        checked={ showExcerpt }
+                        onChange={ ( value ) => setAttributes( { showExcerpt: value } ) }
+                    />
+                </PanelBody>
+            </InspectorControls>
+
+            {/* Block canvas */}
+            <div { ...blockProps } style={ { textAlign: align } }>
+                { /* block content */ }
+            </div>
+        </>
+    );
+}

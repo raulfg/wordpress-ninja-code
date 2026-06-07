@@ -1,0 +1,20 @@
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax( 280px, 1fr ) );
+    /* Rows are shared with children via Subgrid */
+    grid-template-rows: auto;
+    gap: var( --wp--custom--spacing--grid-gap, 1.5rem );
+}
+
+.portfolio-card {
+    display: grid;
+    /* Subgrid: inherits rows from the parent */
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    /* Each card has 4 zones: image, title, description, CTA */
+}
+
+.portfolio-card__image    { /* Row 1: image */       }
+.portfolio-card__title    { /* Row 2: title */       }
+.portfolio-card__body     { /* Row 3: description */ }
+.portfolio-card__footer   { /* Row 4: button */      }

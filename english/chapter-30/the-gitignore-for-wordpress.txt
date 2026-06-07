@@ -1,0 +1,36 @@
+# WordPress core — not your code
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+
+# Uploads and cache
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+/wp-content/wflogs/
+
+# Third-party plugins (if not managed with Composer)
+# /wp-content/plugins/*
+# !wp-content/plugins/my-plugin/
+
+# Local dependencies
+node_modules/
+vendor/
+
+# Configuration with credentials
+.env
+.env.local
+.env.*.local
+wp-config-local.php
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

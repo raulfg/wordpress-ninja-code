@@ -1,0 +1,22 @@
+{
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "wpengine/advanced-custom-fields-pro",
+        "version": "6.3.0",
+        "type": "wordpress-plugin",
+        "dist": {
+          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k={ACF_PRO_KEY}",
+          "type": "zip"
+        },
+        "require": {
+          "composer/installers": "^2.0"
+        }
+      }
+    }
+  ],
+  "require": {
+    "wpengine/advanced-custom-fields-pro": "^6.3"
+  }
+}

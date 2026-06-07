@@ -1,0 +1,27 @@
+import { RichText, useBlockProps } from '@wordpress/block-editor';
+
+export function Edit( { attributes, setAttributes } ) {
+    const blockProps = useBlockProps();
+
+    return (
+        <div { ...blockProps }>
+            <RichText
+                tagName="h3"
+                value={ attributes.title }
+                onChange={ ( value ) => setAttributes( { title: value } ) }
+                placeholder="Portfolio title..."
+                allowedFormats={ [ 'core/bold', 'core/italic' ] }
+            />
+        </div>
+    );
+}
+
+export function Save( { attributes } ) {
+    const blockProps = useBlockProps.save();
+
+    return (
+        <div { ...blockProps }>
+            <RichText.Content tagName="h3" value={ attributes.title } />
+        </div>
+    );
+}
